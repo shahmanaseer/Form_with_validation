@@ -1,0 +1,102 @@
+body{
+    background-color:#3aaf9f;
+    font-family: "Darker Grotesque",sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+}
+.contents {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 7%;
+    display: flex;
+    flex-wrap: wrap;
+}
+form{
+    line-height: 2.5;
+}
+img {
+    padding-top: 40px;
+    padding-right: 0px;
+}
+.reg{
+    background-color: white;
+    width: fit-content;
+    padding: 30px;
+    margin-left: 0px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+input[type=text],input[type=email]{
+    box-sizing: border-box;
+    margin-left: 30px;
+    width: 70%;
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid #3aaf9f;
+}
+#number{
+    box-sizing: border-box;
+    margin-left: 17px;
+    width: 70%;
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid #3aaf9f;
+}
+input[type=password]{
+    box-sizing: border-box;
+    margin-left: 5px;
+    width: 70%;
+    padding: 8px;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #3aaf9f;
+}
+input[type=date]{
+    border: none;
+    background-color: #3aaf9f;
+    width: 30%;
+    height: 30px;
+    border-radius: 2px;
+    margin-left: 10px;
+}
+.but {
+    border: 2px solid #3aaf9f;
+    background-color: #3aaf9f;
+    border-radius: 5px;
+    width: 94%;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    width: 88%;
+    box-shadow: 0 4px 8px 0 #3aaf9f8c, 0 6px 20px 0 #3aaf9f8c;
+}
+.but:hover{
+    transition: 0.4s ease;
+    box-shadow: none;
+    color: white;
+}
+input:focus{
+    border: none!important;
+    border-bottom: 2px solid #3aaf9f!important;
+    background-color: transparent;
+    outline: none!important;
+}
+.error{
+    color:red;
+    font-size: 16px;
+    text-align: center;
+    padding-left: 20px;
+
+}
+body::-webkit-scrollbar{
+    width: 7px;
+}
+body::-webkit-scrollbar-track{
+    background-color: #3aaf9f;
+}
+body::-webkit-scrollbar-thumb{
+    background-color: #ddd;
+    border-radius: 5px;
+}

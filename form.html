@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="form.css" type="text/css">
+</head>
+<body>
+    <div class="contents container">
+        <div class="content ps-5">
+            <img src="https://uxcontent.com/wp-content/uploads/2022/03/hiring-1.png" alt="image">
+        </div>
+        <div class="reg container-md">
+            <form id="myform" class="ms-4" onsubmit=" validateForm()">
+                <label for="NAME">
+                    Name
+                </label>
+                <input type="text" name="NAME" id="name" placeholder="Enter your name" maxlength="100" required>
+                <br>
+                <small id="name-error" class="text-secondary"  style="color: red!important; display: none; padding-left: 80px;">
+                    please enter your name.
+                </small>
+                <label for="email">
+                    E-mail
+                </label>
+                <input type="email" id="email" name="E-mail"placeholder="Enter your e-mail" required>
+                <br>
+                <div id="hello" style="color: red; padding-left: 80px; font-size: 16px;" ></div>
+                <label for="Number">
+                    Number
+                </label>
+                <input type="text" id="number" name="Number" placeholder="Mobile number" minlength="10" maxlength="10" required>
+                <br>
+                <div id="result" class="mb-3" style="color: red; padding-left: 80px; font-size: 16px;" ></div>
+                <!-- <div class="mt-4">  -->
+                    <label for="From-Date" >
+                        From
+                    </label>
+                    <input type="date" id="from" name="From-Date" required onchange="validateDate()">
+                    <label for="To-Date" style="padding-left: 30px;">
+                        To
+                    </label>
+                    <input type="date" id="to" name="To-Date"required onchange="validateDate()">
+                <!-- </div> -->
+                <br>
+                <div id="dateError" style="color: red; padding-left: 80px; font-size: 16px;"></div>
+                <div class="d-flex">
+                    <label for="password">
+                        Password
+                    </label>
+                    <input type="password" class="form-control"  name="password" id="password" value="" placeholder="Password">
+                    <br>
+                </div>
+                <div class="d-flex">
+                    <label for="confirm_password">
+                        Password
+                    </label>
+                    <input type="password" class="form-control"  name="confirm_password" value="" placeholder="Confirm Password" id="confirmPassword" onkeyup="validatePassword()">
+                </div>
+                <small id="password_error" class="text-secondary"  style="color: red !important; display: none; padding-left: 90px;">
+                    Passwords do not match.
+                </small>            
+                <button class="btn button mt-5 mb-2 pb-4 pt-1 but" type="submit" onclick="validateForm()" >
+                    submit
+                </button>
+            </form>
+            
+        </div>
+    </div>
+
+    <div id="successMessage" style="display: none;">Successfully Completed!</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        function validateForm(){
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var phoneNumber = document.getElementById("number").value;
+            var fromDate = document.getElementById("from").value;
+            var toDate = document.getElementById("to").value;
+        
+            var nameError = document.getElementById("name-error");
+            if (name === "") {
+                    nameError.style.display="block";
+                } else {
+                    nameError.style.display = "none";
+                }
+
+                var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (pattern.test(email)) {
+                        document.getElementById("hello").innerHTML = "";
+                    } else {
+                        document.getElementById("hello").innerHTML = "Invalid email address.";
+                    }
+                    var pattern = /^[789]{1}[0-9]{9}$/;
+
+                    if (pattern.test(phoneNumber)) {
+                        document.getElementById("result").innerHTML = "";
+                    } else {
+                        document.getElementById("result").innerHTML = "Invalid phone number.";
+                    }
+
+                    if (new Date(toDate) < new Date(fromDate)) {
+                            document.getElementById("dateError").innerHTML = "To date must be after From date.";
+                        } else {
+                            document.getElementById("dateError").innerHTML = "";
+                        }
+        }
+
+
+    function validatePassword() {
+        var passwordInput = document.getElementById("password");
+        var confirmInput = document.getElementById("confirmPassword");
+        var passwordError = document.getElementById("password_error");
+        if (passwordInput.value !== confirmInput.value) {
+            passwordError.style.display = "block";
+        } else {
+            passwordError.style.display = "none";
+        }
+        
+    }
+
+    //     function validateName() {
+    //             const nameInput = document.getElementById("name");
+    //             const nameError = document.getElementById("name-error");
+    //             if (nameInput.value === "") {
+    //                 nameError.style.display="block";
+    //             } else {
+    //                 nameError.style.display = "none";
+    //             }
+    //         }
+    //     function validateEmail(){
+    //         var email = document.getElementById("email").value;
+    //         var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    //         if (pattern.test(email)) {
+    //                     document.getElementById("hello").innerHTML = "";
+    //                 } else {
+    //                     document.getElementById("hello").innerHTML = "Invalid email address.";
+    //                 }
+    //     }
+    //         function validateIndianPhoneNumber() {
+    //             var phoneNumber = document.getElementById("number").value;
+    //             var pattern = /^[789]{1}[0-9]{9}$/;
+
+    //             if (pattern.test(phoneNumber)) {
+    //                 document.getElementById("result").innerHTML = "";
+    //             } else {
+    //                 document.getElementById("result").innerHTML = "Invalid phone number.";
+    //             }
+    //         }
+    //         function validationDate(){
+    //            var fromDate = document.getElementById("from").value;
+    //            var toDate = document.getElementById("to").value;
+    //            if (new Date(toDate) < new Date(fromDate)) {
+    //                 document.getElementById("dateError").innerHTML = "To date must be after From date.";
+    //             } else {
+    //                 document.getElementById("dateError").innerHTML = "";
+    //             }
+    //         }
+
+
+    //         // function submitHandle(e) {
+    //         //    alert("SUBMITED")
+    //         // }
+    
+        
+
+
+
+ </script>
+</body>
+</html>
